@@ -1,3 +1,3 @@
 return {
-	{ "zenbones-theme/zenbones.nvim", enabled = false },
+	{ "rose-pine/neovim" , enabled = false },
 }
