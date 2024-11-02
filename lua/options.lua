@@ -71,19 +71,21 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 -- Paste without change the unnamed register (clipboard)
 vim.keymap.set("x", "<leader>p", [["_dP]])
--- Yank to the system clipboard 
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+-- Yank to the system clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
--- Delete without saving it to the clipboard 
-vim.keymap.set({"n", "v"}, "<leader>d", "\"_d")
+-- Delete without saving it to the clipboard
+vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
 -- Navigate items in the quickfix list
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- Navigate items in the location list
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", {desc = "Move top"})
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", {desc = "Move down"})
 -- search-and-replace shortcut of the word under the cursor in a file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- Unload the current buffer
+vim.keymap.set("n", "<leader>bd", "<cmd>:bd<CR>", { desc = "Unload buffer" })
 
 -- Highlight when yanking (copying) text
 -- Try it with `yap` in normal mode
