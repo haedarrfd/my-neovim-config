@@ -20,7 +20,7 @@ vim.opt.smartcase = true
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
 -- Decrease update time
-vim.opt.updatetime = 250
+vim.opt.updatetime = 100
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
 vim.opt.timeoutlen = 300
@@ -35,7 +35,14 @@ vim.opt.inccommand = "split"
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 15
+vim.opt.scrolloff = 12
+-- Line wrapping
+vim.opt.wrap = false
+-- Highlighting search and incremental search
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+-- Enables true color support (24-bit colors)
+vim.opt.termguicolors = true
 
 -- Basic keymaps
 -- Clear highlights on search when pressing <Esc> in normal mode
@@ -51,6 +58,32 @@ vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left wind
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- Move a selected block of text
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- Move cursor and screen stay in the middle
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- Join lines while keeping your view and cursor position consistent
+vim.keymap.set("n", "J", "mzJ`z")
+-- Navigate search results stay in the middle
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+-- Paste without change the unnamed register (clipboard)
+vim.keymap.set("x", "<leader>p", [["_dP]])
+-- Yank to the system clipboard 
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+-- Delete without saving it to the clipboard 
+vim.keymap.set({"n", "v"}, "<leader>d", "\"_d")
+-- Navigate items in the quickfix list
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- Navigate items in the location list
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- search-and-replace shortcut of the word under the cursor in a file
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Highlight when yanking (copying) text
 -- Try it with `yap` in normal mode
