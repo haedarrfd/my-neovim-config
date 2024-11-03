@@ -80,8 +80,8 @@ vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- Navigate items in the location list
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", {desc = "Move top"})
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", {desc = "Move down"})
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Move top" })
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Move down" })
 -- search-and-replace shortcut of the word under the cursor in a file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- Unload the current buffer
@@ -96,3 +96,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+-- Jump to the next/previous todo-comments
+vim.keymap.set("n", "]t", function()
+	require("todo-comments").jump_next()
+end, { desc = "Next comment" })
+vim.keymap.set("n", "[t", function()
+	require("todo-comments").jump_prev()
+end, { desc = "Previous comment" })

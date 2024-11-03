@@ -37,10 +37,16 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls",
+				"rust_analyzer",
 				"gopls",
 				"cssmodules_ls",
+				"html",
+				"denols",
+				"pyright",
 				"tailwindcss",
 				"intelephense",
+				"vuels",
+				"jsonls",
 			},
 			handlers = {
 				function(server_name)
@@ -55,9 +61,8 @@ return {
 						capabilities = capabilities,
 						settings = {
 							Lua = {
-								runtime = { version = "Lua 5.1" },
 								diagnostics = {
-									globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
+									globals = { "vim" },
 								},
 							},
 						},
