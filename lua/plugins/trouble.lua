@@ -3,6 +3,21 @@ return {
 	enabled = true,
 	opts = {
 		max_items = 100,
+		icons = {
+			indent = {
+				middle = " ",
+				last = " ",
+				top = " ",
+				ws = "│  ",
+			},
+		},
+		modes = {
+			diagnostics = {
+				groups = {
+					{ "filename", format = "{file_icon} {basename:Title} {count}" },
+				},
+			},
+		}
 	},
 	cmd = "Trouble",
 	keys = {

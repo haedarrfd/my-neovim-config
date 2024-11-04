@@ -84,6 +84,8 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Move top" })
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Move down" })
 -- search-and-replace shortcut of the word under the cursor in a file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- Open file explorer
+vim.keymap.set("n", "<leader>b", "<cmd>Lexplore<CR>", { desc = "Open file explorer" })
 -- Unload the current buffer
 --vim.keymap.set("n", "<leader>bd", "<cmd>:bd<CR>", { desc = "Unload buffer" })
 
