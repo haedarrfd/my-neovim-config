@@ -24,7 +24,7 @@ return {
 			contrast = "hard",
 			palette_overrides = {
 				bright_green = "#7788AA",
-				bright_red = "#d3869b",
+				dark0_hard = "#171717"
 			},
 			overrides = {},
 			dim_inactive = false,

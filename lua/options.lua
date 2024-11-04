@@ -20,7 +20,7 @@ vim.opt.smartcase = true
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
 -- Decrease update time
-vim.opt.updatetime = 100
+vim.opt.updatetime = 250
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
 vim.opt.timeoutlen = 300
@@ -85,7 +85,7 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Move down" })
 -- search-and-replace shortcut of the word under the cursor in a file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- Unload the current buffer
-vim.keymap.set("n", "<leader>bd", "<cmd>:bd<CR>", { desc = "Unload buffer" })
+--vim.keymap.set("n", "<leader>bd", "<cmd>:bd<CR>", { desc = "Unload buffer" })
 
 -- Highlight when yanking (copying) text
 -- Try it with `yap` in normal mode
