@@ -2,6 +2,7 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
+		enabled = true,
 		event = "VimEnter",
 		tag = "0.1.8",
 		dependencies = {
@@ -36,6 +37,7 @@ return {
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
+		enabled = true,
 		config = function()
 			require("telescope").setup({
 				extensions = {

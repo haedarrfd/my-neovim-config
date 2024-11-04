@@ -1,5 +1,6 @@
 return {
 	"ellisonleao/gruvbox.nvim",
+	enabled = true,
 	priority = 1000,
 	name = "gruvbox",
 	config = function()
