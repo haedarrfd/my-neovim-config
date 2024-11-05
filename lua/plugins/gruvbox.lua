@@ -25,13 +25,13 @@ return {
 			contrast = "hard",
 			palette_overrides = {
 				bright_green = "#7788AA",
-				dark0_hard = "#171717"
+				dark0_hard = "#18181b"
 			},
 			overrides = {},
 			dim_inactive = false,
 			transparent_mode = false,
 		})
 
-		vim.cmd("colorscheme gruvbox")
+		 vim.cmd("colorscheme gruvbox")
 	end,
 }

@@ -1,6 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	enabled = true,
+	lazy = false,
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
@@ -73,22 +74,19 @@ return {
 		})
 
 		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+			group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 			callback = function()
 				vim.keymap.set("n", "K", function()
 					vim.lsp.buf.hover()
 				end, {})
-				vim.keymap.set("n", "<leader>gd", function()
-					vim.lsp.buf.definition()
-				end, {})
-				vim.keymap.set("n", "<leader>gr", function()
-					vim.lsp.buf.references()
-				end, {})
+		--		vim.keymap.set("n", "<leader>gd", function()
+		--			vim.lsp.buf.definition()
+		--		end, {})
+		--		vim.keymap.set("n", "<leader>gr", function()
+		--			vim.lsp.buf.references()
+		--		end, {})
 				vim.keymap.set("n", "<leader>ca", function()
 					vim.lsp.buf.code_action()
-				end, {})
-				vim.keymap.set("n", "<leader>rn", function()
-					vim.lsp.buf.rename()
 				end, {})
 				vim.keymap.set("n", "<leader>sh", function()
 					vim.lsp.buf.signature_help()
@@ -104,9 +102,6 @@ return {
 				end, {})
 				vim.keymap.set("n", "<leader>f", function()
 					vim.lsp.buf.format()
-				end, {})
-				vim.keymap.set("n", "<leader>td", function()
-					vim.lsp.buf.type_definition()
 				end, {})
 			end,
 		})
@@ -133,16 +128,16 @@ return {
 			}),
 		})
 
-	--	vim.diagnostic.config({
-			-- update_in_insert = true,
-	--		float = {
-	--			focusable = false,
-	--			style = "minimal",
-	--			border = "rounded",
-	--			source = "always",
-	--			header = "",
-	--			prefix = "",
-	--		},
-	--	})
+		--	vim.diagnostic.config({
+		-- update_in_insert = true,
+		--		float = {
+		--			focusable = false,
+		--			style = "minimal",
+		--			border = "rounded",
+		--			source = "always",
+		--			header = "",
+		--			prefix = "",
+		--		},
+		--	})
 	end,
 }
