@@ -8,6 +8,11 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
+-- Recovery, backup, and undo stuff
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
+vim.opt.undodir = os.getenv("HOME") .. "/.nvim/undodir"
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 -- Enable break indent
@@ -24,12 +29,15 @@ vim.opt.updatetime = 250
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
 vim.opt.timeoutlen = 300
+-- Treat @ characters as valid in file names and path
+vim.opt.isfname:append("@-@")
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
-vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
-end)
+--	vim.schedule(function()
+--		vim.opt.clipboard = "unnamedplus"
+--	end)
+
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
 -- Show which line your cursor is on
@@ -50,9 +58,9 @@ vim.opt.guicursor = table.concat({
 	"r:hor50-Cursor/lCursor-blinkwait1000-blinkon125-blinkoff75"
 }, ",")
 
--- Basic keymaps
+-- Remap key
 -- Clear highlights on search when pressing <Esc> in normal mode
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlighting of search" })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlighting" })
 -- Disable arrow keys in normal mode
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>', { desc = "Use h to move" })
 vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>', { desc = "Use l to move" })
@@ -70,24 +78,26 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move text above" })
 -- Move cursor and screen stay in the middle
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
--- Join lines while keeping your view and cursor position consistent
-vim.keymap.set("n", "J", "mzJ`z", { desc = "Move text above" })
--- Navigate search results stay in the middle
-vim.keymap.set("n", "n", "nzzzv", { desc = "Move text above" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "Move text above" })
+-- Best remap for join lines
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines" })
+-- Navigate search results and the view stay in the middle
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 -- Paste without change the unnamed register (clipboard)
-vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Move text above" })
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without change unnamed register" })
 -- Yank to the system clipboard
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Move text above" })
-vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Move text above" })
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
+vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank to system clipboard" })
 -- Delete without saving it to the clipboard
-vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d", { desc = "Move text above" })
+vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d", { desc = "Delete without store in register" })
+-- No operation or unmap a keybinding
+vim.keymap.set("n", "Q", "<nop>", { desc = "Unmap keybindings" })
 -- Navigate items in the quickfix list
---vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- Navigate items in the location list
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Move top" })
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Move down" })
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- search-and-replace shortcut of the word under the cursor in a file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- Open file explorer
@@ -95,8 +105,7 @@ vim.keymap.set("n", "<leader>b", "<cmd>Lexplore<CR>", { desc = "Open file explor
 -- Unload the current buffer
 --vim.keymap.set("n", "<leader>bd", "<cmd>:bd<CR>", { desc = "Unload buffer" })
 
--- Highlight when yanking (copying) text
--- Try it with `yap` in normal mode
+-- Highlight when yanking text
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking text",
 	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
