@@ -31,8 +31,6 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 -- Treat @ characters as valid in file names and path
 vim.opt.isfname:append("@-@")
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --	vim.schedule(function()
 --		vim.opt.clipboard = "unnamedplus"
