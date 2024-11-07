@@ -37,7 +37,7 @@ vim.opt.isfname:append("@-@")
 --	vim.schedule(function()
 --		vim.opt.clipboard = "unnamedplus"
 --	end)
-
+vim.opt.clipboard:append("unnamedplus")
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
 -- Show which line your cursor is on
@@ -93,8 +93,8 @@ vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d", { desc = "Delete without store
 -- No operation or unmap a keybinding
 vim.keymap.set("n", "Q", "<nop>", { desc = "Unmap keybindings" })
 -- Navigate items in the quickfix list
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+--vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+--vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- Navigate items in the location list
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")

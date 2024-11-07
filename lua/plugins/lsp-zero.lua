@@ -85,7 +85,7 @@ return {
 				vim.keymap.set("n", "<leader>ws", function() require("telescope.builtin").lsp_dynamic_workspace_symbols() end,
 					opts)
 				vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
-				vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+				vim.keymap.set("i", "<C-sh>", function() vim.lsp.buf.signature_help() end, opts)
 				vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, opts)
 				vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
 				vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
