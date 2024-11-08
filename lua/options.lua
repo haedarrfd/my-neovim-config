@@ -53,7 +53,7 @@ vim.opt.termguicolors = true
 vim.opt.guicursor = table.concat({
 	"n-v-c:block-Cursor/lCursor-blinkwait1000-blinkon125-blinkoff75",
 	"i-ci:block-Cursor/lCursor-blinkwait1000-blinkon125-blinkoff75",
-	"r:hor50-Cursor/lCursor-blinkwait1000-blinkon125-blinkoff75"
+	"r:hor50-Cursor/lCursor-blinkwait1000-blinkon125-blinkoff75",
 }, ",")
 
 -- Remap key
@@ -87,7 +87,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without change unname
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank to system clipboard" })
 -- Delete without saving it to the clipboard
-vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d", { desc = "Delete without store in register" })
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without store in register" })
 -- No operation or unmap a keybinding
 vim.keymap.set("n", "Q", "<nop>", { desc = "Unmap keybindings" })
 -- Navigate items in the quickfix list

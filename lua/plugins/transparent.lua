@@ -1,5 +1,5 @@
 return {
-  "xiyaowong/transparent.nvim",
-  enabled = true,
-  lazy = false,
+	"xiyaowong/transparent.nvim",
+	enabled = true,
+	lazy = false,
 }

@@ -8,7 +8,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			{
 				"nvim-tree/nvim-web-devicons",
-				enabled = vim.g.have_nerd_font
+				enabled = vim.g.have_nerd_font,
 			},
 		},
 		config = function()
@@ -34,13 +34,13 @@ return {
 				builtin.find_files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "[S]earch [N]eovim files" })
 
-			require('telescope').load_extension('fzf')
+			require("telescope").load_extension("fzf")
 		end,
 	},
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		enabled = true,
-		build = "make"
+		build = "make",
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",

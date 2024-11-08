@@ -17,7 +17,7 @@ return {
 					{ "filename", format = "{file_icon} {basename:Title} {count}" },
 				},
 			},
-		}
+		},
 	},
 	cmd = "Trouble",
 	keys = {

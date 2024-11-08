@@ -9,11 +9,11 @@ return {
 		config = function()
 			require("gitsigns").setup({
 				signs = {
-					add = { text = '+' },
-					change = { text = '~' },
-					delete = { text = '_' },
-					topdelete = { text = '‾' },
-					changedelete = { text = '~' },
+					add = { text = "+" },
+					change = { text = "~" },
+					delete = { text = "_" },
+					topdelete = { text = "‾" },
+					changedelete = { text = "~" },
 				},
 			})
 
@@ -21,6 +21,6 @@ return {
 			vim.keymap.set("n", "<leader>gg", "<cmd>:Gitsigns toggle_current_line_blame<CR>", { desc = "Git blame" })
 			vim.keymap.set("n", "<leader>ge", "<cmd>:Gitsigns setqflist<CR>", { desc = "Set quick fix list" })
 			vim.keymap.set("n", "<leader>gl", "<cmd>:Gitsigns setloclist<CR>", { desc = "Set location list" })
-		end
-	}
+		end,
+	},
 }

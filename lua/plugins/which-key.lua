@@ -6,7 +6,7 @@ return {
 		preset = "modern",
 		delay = function()
 			return 1500
-		end
+		end,
 	},
 	keys = {
 		{

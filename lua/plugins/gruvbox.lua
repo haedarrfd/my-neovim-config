@@ -32,7 +32,7 @@ return {
 				bright_green = "#7788AA",
 				bright_red = "#eb6f92",
 				bright_purple = "#ebbcba",
-				dark0_hard = "#18181b"
+				dark0_hard = "#18181b",
 			},
 			overrides = {},
 			dim_inactive = false,

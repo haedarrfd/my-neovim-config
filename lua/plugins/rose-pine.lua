@@ -18,5 +18,5 @@ return {
 		vim.cmd("colorscheme rose-pine-main")
 
 		Color()
-	end
+	end,
 }
