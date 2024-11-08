@@ -149,6 +149,8 @@ return {
 
 		vim.diagnostic.config({
 			virtual_text = true,
+			update_in_insert = false,
+			underline = false,
 			signs = {
 				text = {
 					[vim.diagnostic.severity.ERROR] = "✘",

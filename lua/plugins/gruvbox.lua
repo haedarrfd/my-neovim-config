@@ -1,7 +1,7 @@
-function Color()
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
+--function Color()
+--	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+--	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+--end
 
 return {
 	"ellisonleao/gruvbox.nvim",
@@ -40,6 +40,6 @@ return {
 		})
 		vim.cmd("colorscheme gruvbox")
 
-		Color()
+		--Color()
 	end,
 }
