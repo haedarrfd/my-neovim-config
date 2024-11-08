@@ -114,6 +114,7 @@ return {
 				vim.keymap.set("i", "<C-h>", function()
 					vim.lsp.buf.signature_help()
 				end, opts)
+				--	If you don't use formatting engine by conform, use this instead
 				--	vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, opts)
 				vim.keymap.set("n", "[d", function()
 					vim.diagnostic.goto_next()
@@ -141,7 +142,7 @@ return {
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
+				--{ name = "luasnip" }, -- If you want to use luasnip
 				{ name = "path" },
 				{ name = "buffer" },
 			}),
@@ -153,8 +154,8 @@ return {
 			underline = false,
 			signs = {
 				text = {
-					[vim.diagnostic.severity.ERROR] = "✘",
-					[vim.diagnostic.severity.WARN] = "▲",
+					[vim.diagnostic.severity.ERROR] = "E",
+					[vim.diagnostic.severity.WARN] = "W",
 					[vim.diagnostic.severity.HINT] = "H",
 					[vim.diagnostic.severity.INFO] = "I",
 				},

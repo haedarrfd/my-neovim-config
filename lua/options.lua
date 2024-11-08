@@ -31,11 +31,10 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 -- Treat @ characters as valid in file names and path
 vim.opt.isfname:append("@-@")
---  Remove this option if you want your OS clipboard to remain independent.
---	vim.schedule(function()
---		vim.opt.clipboard = "unnamedplus"
---	end)
-vim.opt.clipboard:append("unnamedplus")
+-- Remove this option if you want your OS clipboard to remain independent.
+vim.schedule(function()
+	vim.opt.clipboard = "unnamedplus"
+end)
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
 -- Show which line your cursor is on
@@ -64,7 +63,6 @@ vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>', { desc = "Use h
 vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>', { desc = "Use l to move" })
 vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>', { desc = "Use k to move" })
 vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>', { desc = "Use j to move" })
--- Keybinds to make split navigation easier.
 -- Use CTRL+<hjkl> to switch between windows
 --vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 --vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
@@ -81,8 +79,10 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines" })
 -- Navigate search results and the view stay in the middle
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+-- Delete a character without copying into register
+vim.keymap.set("n", "x", '"_x', { desc = "Delete without store in register" })
 -- Paste without change the unnamed register (clipboard)
-vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without change unnamed register" })
+--vim.keymap.set("x", "<leader>p", '"_dp', { desc = "Paste without change unnamed register" })
 -- Yank to the system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank to system clipboard" })
@@ -90,16 +90,13 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank to system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without store in register" })
 -- No operation or unmap a keybinding
 vim.keymap.set("n", "Q", "<nop>", { desc = "Unmap keybindings" })
--- Navigate items in the quickfix list
---vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
---vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- Navigate items in the location list
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- search-and-replace shortcut of the word under the cursor in a file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- Open file explorer
-vim.keymap.set("n", "<leader>b", "<cmd>Lexplore<CR>", { desc = "Open file explorer" })
+--vim.keymap.set("n", "<leader>b", "<cmd>Ex<CR>", { desc = "Open file explorer" })
 -- Unload the current buffer
 --vim.keymap.set("n", "<leader>bd", "<cmd>:bd<CR>", { desc = "Unload buffer" })
 
