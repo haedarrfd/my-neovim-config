@@ -42,7 +42,7 @@ return {
 				"lua_ls",
 				"rust_analyzer",
 				"gopls",
-				"cssmodules_ls",
+				"cssls",
 				"html",
 				"denols",
 				"pyright",
@@ -50,7 +50,8 @@ return {
 				"intelephense",
 				"vuels",
 				"jsonls",
-				"sqlls",
+				"hydra_lsp",
+				"marksman",
 			},
 			handlers = {
 				function(server_name)
@@ -60,14 +61,30 @@ return {
 				end,
 
 				["lua_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.lua_ls.setup({
+					require("lspconfig").lua_ls.setup({
 						capabilities = capabilities,
 						settings = {
 							Lua = {
 								diagnostics = {
 									globals = { "vim" },
 								},
+							},
+						},
+					})
+				end,
+
+				["cssls"] = function()
+					capabilities.textDocument.completion.completionItem.snippetSupport = true
+					require("lspconfig").cssls.setup({
+						capabilities = capabilities,
+					})
+				end,
+
+				["gopls"] = function()
+					require("lspconfig").gopls.setup({
+						settings = {
+							gopls = {
+								gofumpt = true,
 							},
 						},
 					})
@@ -79,17 +96,34 @@ return {
 			callback = function(event)
 				local opts = { buffer = event.buf, remap = false }
 
-				vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-				vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-				vim.keymap.set("n", "gr", function() require("telescope.builtin").lsp_references() end, opts)
-				vim.keymap.set("n", "<leader>ws", function() require("telescope.builtin").lsp_dynamic_workspace_symbols() end,
-					opts)
-				vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
-				vim.keymap.set("i", "<C-sh>", function() vim.lsp.buf.signature_help() end, opts)
-				vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, opts)
-				vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-				vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-				vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+				vim.keymap.set("n", "K", function()
+					vim.lsp.buf.hover()
+				end, opts)
+				vim.keymap.set("n", "gd", function()
+					vim.lsp.buf.definition()
+				end, opts)
+				vim.keymap.set("n", "gr", function()
+					require("telescope.builtin").lsp_references()
+				end, opts)
+				vim.keymap.set("n", "<leader>ws", function()
+					require("telescope.builtin").lsp_dynamic_workspace_symbols()
+				end, opts)
+				vim.keymap.set("n", "<leader>ca", function()
+					vim.lsp.buf.code_action()
+				end, opts)
+				vim.keymap.set("i", "<C-h>", function()
+					vim.lsp.buf.signature_help()
+				end, opts)
+				--	vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, opts)
+				vim.keymap.set("n", "[d", function()
+					vim.diagnostic.goto_next()
+				end, opts)
+				vim.keymap.set("n", "]d", function()
+					vim.diagnostic.goto_prev()
+				end, opts)
+				vim.keymap.set("n", "<leader>vd", function()
+					vim.diagnostic.open_float()
+				end, opts)
 			end,
 		})
 
@@ -109,18 +143,27 @@ return {
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "path" },
-				{ name = "buffer",  keyword_length = 2 },
+				{ name = "buffer" },
 			}),
 		})
 
 		vim.diagnostic.config({
+			virtual_text = true,
 			signs = {
 				text = {
-					[vim.diagnostic.severity.ERROR] = '✘',
-					[vim.diagnostic.severity.WARN] = '▲',
-					[vim.diagnostic.severity.HINT] = '⚑',
-					[vim.diagnostic.severity.INFO] = '»',
+					[vim.diagnostic.severity.ERROR] = "✘",
+					[vim.diagnostic.severity.WARN] = "▲",
+					[vim.diagnostic.severity.HINT] = "H",
+					[vim.diagnostic.severity.INFO] = "I",
 				},
+			},
+			float = {
+				focusable = false,
+				style = "minimal",
+				border = "rounded",
+				source = "always",
+				header = "",
+				prefix = "",
 			},
 		})
 	end,
