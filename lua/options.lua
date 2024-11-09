@@ -27,7 +27,6 @@ vim.opt.signcolumn = "yes"
 -- Decrease update time
 vim.opt.updatetime = 250
 -- Decrease mapped sequence wait time
--- Displays which-key popup sooner
 vim.opt.timeoutlen = 300
 -- Treat @ characters as valid in file names and path
 vim.opt.isfname:append("@-@")

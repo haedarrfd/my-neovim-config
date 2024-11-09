@@ -15,7 +15,7 @@ return {
 		vim.keymap.set("n", "<leader>dam", function()
 			harpoon:list():remove()
 		end, { desc = "Delete all mark" })
-		vim.keymap.set("n", "<C-s>", function()
+		vim.keymap.set("n", "<C-a>", function()
 			harpoon:list():select(1)
 		end, { desc = "Select first mark file" })
 		vim.keymap.set("n", "<C-t>", function()
