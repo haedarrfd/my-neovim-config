@@ -26,7 +26,8 @@ return {
 			cmp_lsp.default_capabilities()
 		)
 
-		require("luasnip.loaders.from_vscode").lazy_load()
+		-- If you want to load vscode snippet from plugins (friendly-snippets)
+		--require("luasnip.loaders.from_vscode").lazy_load()
 		require("fidget").setup()
 		require("mason").setup({
 			ui = {
@@ -139,6 +140,7 @@ return {
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
 				["<C-Space>"] = cmp.mapping.complete(),
+				["<C-e>"] = cmp.mapping.abort(),
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },

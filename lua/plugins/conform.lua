@@ -28,6 +28,8 @@ return {
 			php = { "pretty-php" },
 			blade = { "blade-formatter" },
 			markdown = { "prettier" },
+			yaml = { "prettier" },
+			xml = { "xmlformatter" },
 		},
 		formatters = {
 			inherit = false,

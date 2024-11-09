@@ -6,7 +6,7 @@
 return {
 	{
 		"ellisonleao/gruvbox.nvim",
-		enabled = true,
+		enabled = false,
 		priority = 1000,
 		name = "gruvbox",
 		config = function()
@@ -69,6 +69,30 @@ return {
 			})
 
 			vim.cmd("colorscheme lackluster")
+			--Color()
+		end,
+	},
+	{
+		"rebelot/kanagawa.nvim",
+		enabled = true,
+		priority = 1000,
+		config = function()
+			require("kanagawa").setup({
+				commentStyle = { italic = false },
+				keywordStyle = { italic = false },
+				statementStyle = { bold = false },
+				colors = {
+					theme = {
+						all = {
+							ui = {
+								bg_gutter = "none",
+							},
+						},
+					},
+				},
+			})
+
+			vim.cmd("colorscheme kanagawa-dragon")
 			--Color()
 		end,
 	},
