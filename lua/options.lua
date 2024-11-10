@@ -27,7 +27,7 @@ vim.opt.signcolumn = "yes"
 -- Decrease update time
 vim.opt.updatetime = 250
 -- Decrease mapped sequence wait time
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 1000
 -- Treat @ characters as valid in file names and path
 vim.opt.isfname:append("@-@")
 -- Remove this option if you want your OS clipboard to remain independent.
