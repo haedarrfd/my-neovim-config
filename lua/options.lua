@@ -28,7 +28,7 @@ vim.opt.signcolumn = "yes"
 -- Decrease update time
 vim.opt.updatetime = 250
 -- Decrease mapped sequence wait time
-vim.opt.timeoutlen = 1000
+-- vim.opt.timeoutlen = 1000
 -- Treat @ characters as valid in file names and path
 vim.opt.isfname:append("@-@")
 -- Clipboard
@@ -64,8 +64,8 @@ vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 -- Move a selected block of text
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move text below" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move text above" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move text below" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move text above" })
 -- Move cursor and screen stay in the middle
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
@@ -75,18 +75,18 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines" })
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 -- Delete a character without copying into register
-vim.keymap.set("n", "x", '"_x', { desc = "Delete without store in register" })
+vim.keymap.set("n", "x", '"_x', { silent = true, desc = "Delete without store in register" })
 -- Yank to the system clipboard
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
-vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank to system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { silent = true, desc = "Yank to system clipboard" })
+vim.keymap.set("n", "<leader>Y", [["+Y]], { silent = true, desc = "Yank to system clipboard" })
 -- Delete without saving it to the clipboard
-vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without store in register" })
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { silent = true, desc = "Delete without store in register" })
 -- No operation or unmap a keybinding
 vim.keymap.set("n", "Q", "<nop>", { desc = "No operation" })
 -- search-and-replace shortcut of the word under the cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- Unload the current buffer
-vim.keymap.set("n", "<leader>bd", "<cmd>:bd<CR>", { desc = "Buffer delete" })
+vim.keymap.set("n", "<leader>bd", "<cmd>:bd<CR>", { silent = true, desc = "Buffer delete" })
 
 -- Highlight when yanking text
 vim.api.nvim_create_autocmd("TextYankPost", {

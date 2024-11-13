@@ -5,7 +5,7 @@ return {
 	opts = {
 		preset = "modern",
 		delay = function()
-			return 1500
+			return 1000
 		end,
 		icons = {
 			mappings = false,
@@ -47,6 +47,7 @@ return {
 			function()
 				require("which-key").show({ global = false })
 			end,
+			silent = true,
 			desc = "Buffer Local Keymaps",
 		},
 	},

@@ -17,10 +17,10 @@ return {
 				},
 			})
 
-			vim.keymap.set("n", "<leader>gp", "<cmd>:Gitsigns preview_hunk<CR>", { desc = "Git preview" })
-			vim.keymap.set("n", "<leader>gg", "<cmd>:Gitsigns toggle_current_line_blame<CR>", { desc = "Git blame" })
-			vim.keymap.set("n", "<leader>ge", "<cmd>:Gitsigns setqflist<CR>", { desc = "Set quick fix list" })
-			vim.keymap.set("n", "<leader>gl", "<cmd>:Gitsigns setloclist<CR>", { desc = "Set location list" })
+			vim.keymap.set("n", "<leader>gp", "<cmd>:Gitsigns preview_hunk<CR>", { silent = true, desc = "Git preview" })
+			vim.keymap.set("n", "<leader>gg", "<cmd>:Gitsigns toggle_current_line_blame<CR>", { silent = true, desc = "Git blame" })
+			vim.keymap.set("n", "<leader>ge", "<cmd>:Gitsigns setqflist<CR>", { silent = true, desc = "Set quick fix list" })
+			vim.keymap.set("n", "<leader>gl", "<cmd>:Gitsigns setloclist<CR>", { silent = true, desc = "Set location list" })
 		end,
 	},
 }
